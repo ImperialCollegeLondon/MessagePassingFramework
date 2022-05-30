@@ -11,9 +11,10 @@ res
 # Prerequisite (or note): 
 1. [Install **Docker**](https://docs.docker.com/engine/install/ubuntu/)
 2. [Install **NVIDIA-Docker**](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
-3. You need to install pip or pip3 (e.g., if you use python3, 'sudo apt-get install python3-pip')
-4. The code is designed to use 'python' command. If your OS only support python3, do **use 'python3' instead of 'python' in the command line**. 
-5. If you have an error related to tas_hand.py, it might be the case of downloading model failure. In this case, please download the 'faster_rcnn_1_8_89999.pth' file directly from the [100DOH](https://github.com/ddshan/hand_object_detector) github repository. Then, put it in the <root>/tas_perception/hand_object/models/ folder.
+3. [Install Git LFS](https://git-lfs.github.com/) (if you used the package cloud install, do not forget to run `apt install git-lfs` and `git lfs install`)
+4. You need to install pip or pip3 (e.g., if you use python3, 'sudo apt-get install python3-pip')
+5. The code is designed to use 'python' command. If your OS only support python3, do **use 'python3' instead of 'python' in the command line**. 
+6. If you have an error related to tas_hand.py, it might be the case of downloading model failure. In this case, please download the 'faster_rcnn_1_8_89999.pth' file directly from the [100DOH](https://github.com/ddshan/hand_object_detector) github repository. Then, put it in the <root>/tas_perception/hand_object/models/ folder.
 
 # Running Instruction: 
 1. Download github repository:
@@ -140,7 +141,7 @@ python( or python3) 0_Do_necessary_settings_build_and_run.py
 ```
 * Make sure the master PC is running before you run the second PC
 # To-do list
-- [ ] Resolve 'hand-object detector' model download  issue: it currently often fails to download the model from Google Drive automatically. I may need to put it somewhere else and then put other script download file automatically. At the moment, you can download directly from the origianl 100DOH repository.
+- [x] Resolve 'hand-object detector' model download  issue: it currently often fails to download the model from Google Drive automatically. I may need to put it somewhere else and then put other script download file automatically. At the moment, you can download directly from the origianl 100DOH repository.
 - [x] Resolve 'hand-object detector's 'nms_thresh'-related issue. The error was 'RuntimeError: Not compiled with GPU support'. This was resolved by putting lines to make sure nvidia-docker is installed before building docker.
 - [ ] Put explicit example case, how to turn of MPF. Simply, when switching on pose, object, hand modules (with proper splitting modules into two gpus) and switching on mpf subscriber only, it is able to run MPF on the subscriber script. <- it all depends on your choice of deciding which modules run on which GPUs and which PC will run the mpf subscriber.
 - [ ] Update references when this repository uses more recent vision modules such as [RT-GENE](https://github.com/Tobias-Fischer/rt_gene), which is not mentioned in the Message Passing Frameowrk (ICRA22) paper. This repository will be updated by adopting the state-of-the-art modules. So, the methods (or pretrained models) used in this repository may be different from what MPF paper describes. To reflect this, I will update when there are other modules being used after ICRA 22 presentation.
