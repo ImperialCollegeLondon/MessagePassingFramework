@@ -38,9 +38,8 @@ git clone https://github.com/youngkyoonjang/MessagePassingFramework.git
 --pose T --object F --hand F --integration F --MPF F
 ```
 4. Switch on/off the realsense camera launch script:
-* If you want to launch realsense camera on your machine: 
-```python
---realsense T
+```python 
+'&& MPF_REALSENSE_ON=TRUE '   # Switch this to 'FALSE' to turn off realsense
 ```
 5. Do everything else: 
 ```python
@@ -77,18 +76,19 @@ wlp7s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 3. Turn on the module you want to test (e.g., object detection module running on the first (only) GPU):
 * Edit '0_Do_necessary_settings_build_and_run.py' in the root folder
 ```python
-os.system(my_python_path + ' 2_Switch_module_activation_and_assign_gpus.py --pose F:0 --object T:0 --hand F:0 --gaze F:0') ##Acvitate:T/F, gpu_id:0/1
+os.system(my_python_path + ' 2_Switch_module_activation_and_assign_gpus.py --pose F:0 --object T:0 --hand F:0 --gaze F:0') ##Activate:T/F, gpu_id:0/1
 ```
 4. Switch on the module you want to visualise subscribing results (e.g., object detection subscriber):
 * Edit '0_Do_necessary_settings_build_and_run.py' in the root folder
 ```python
-os.system(my_python_path + 3_Switch_subscriber_activation.py --pose F --object T --hand F --integration F --MPF F') ##Acvitate:T/F
+os.system(my_python_path + 3_Switch_subscriber_activation.py --pose F --object T --hand F --integration F --MPF F') ##Activate:T/F
 ```
 5. Switch on the realsense camera launch script:
-* Edit '0_Do_necessary_settings_build_and_run.py' in the root folder
-```python
-os.system(my_python_path + 4_Switch_on_off_realsense_launch.py --realsense T') ##Acvitate:T/F
+* Edit '0_Do_necessary_settings_build_and_run.py' in the root folder using the `MPF_REALSENSE_ON` variable.
+```python 
+'&& MPF_REALSENSE_ON=TRUE '   # Switch this to 'FALSE' to turn off realsense
 ```
+
 6. Now ready to build docker image and run:
 ```python
 python( or python3) 0_Do_necessary_settings_build_and_run.py
@@ -118,23 +118,23 @@ wlp108s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 3. Turn on the module you want to test (For second PC, for example, pose estimation module running on the first (only) GPU):
 * Edit '0_Do_necessary_settings_build_and_run.py' in the root folder
 ```python
-os.system(my_python_path + ' 2_Switch_module_activation_and_assign_gpus.py --pose T:0 --object F:0 --hand F:0 --gaze F:0') ##Acvitate:T/F, gpu_id:0/1
+os.system(my_python_path + ' 2_Switch_module_activation_and_assign_gpus.py --pose T:0 --object F:0 --hand F:0 --gaze F:0') ##Activate:T/F, gpu_id:0/1
 ```
 * The pose estimation and object detection modules must run on the same machine.
 
 4. Switch on the module you want to visualise subscribing results (e.g., pose estimation subscriber):
 * Edit '0_Do_necessary_settings_build_and_run.py' in the root folder
 ```python
-os.system(my_python_path + ' 3_Switch_subscriber_activation.py --pose T --object F --hand F --integration F --MPF F') ##Acvitate:T/F
+os.system(my_python_path + ' 3_Switch_subscriber_activation.py --pose T --object F --hand F --integration F --MPF F') ##Activate:T/F
 ```
 * You can subscribe for the topics published by other PCs on the same network.
 	
 5. Switch off the realsense camera launch script:
-* Edit '0_Do_necessary_settings_build_and_run.py' in the root folder
-```python
-os.system(my_python_path + 4_Switch_on_off_realsense_launch.py --realsense F') ##Acvitate:T/F
+* Edit '0_Do_necessary_settings_build_and_run.py' in the root folder using the `MPF_REALSENSE_ON` variable.
+```python 
+'&& MPF_REALSENSE_ON=FALSE '
 ```
-	
+
 6. Now ready to build docker image and run:
 ```python
 python( or python3) 0_Do_necessary_settings_build_and_run.py
