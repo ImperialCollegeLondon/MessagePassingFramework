@@ -101,7 +101,7 @@ if not os.path.isfile(hand_model_directory_path+'/faster_rcnn_1_8_89999.pth'):
     print('./tas_perception/hand_object/models/faster_rcnn_1_8_89999.pth download complete!!')
 
 # Download rt_gene model /rt_gene_/model_nets folder
-Path('/rt_gene/model_nets').mkdir(parents=True, exist_ok=True)
+Path('./rt_gene/model_nets').mkdir(parents=True, exist_ok=True)
 Path('./rt_gene/model_nets/SFD').mkdir(parents=True, exist_ok=True)
 Path('./rt_gene/model_nets/ThreeDDFA').mkdir(parents=True, exist_ok=True)
 
